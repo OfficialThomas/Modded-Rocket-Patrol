@@ -28,9 +28,9 @@ class Play extends Phaser.Scene {
         this.p1Rocket = new Rocket(this, game.config.width/2, game.config.height - borderUISize - borderPadding, 'rocket').setOrigin(0.5, 0);
         
         //add spaceships (x3)
-        this.ship01 = new Spaceship(this, game.config.width + borderUISize*6, borderUISize*4, 'spaceship', 0, 30).setOrigin(0, 0);
-        this.ship02 = new Spaceship(this, game.config.width + borderUISize*3, borderUISize*5 + borderPadding*2, 'spaceship', 0, 20).setOrigin(0,0);
-        this.ship03 = new Spaceship(this, game.config.width, borderUISize*6 + borderPadding*4, 'spaceship', 0, 10).setOrigin(0, 0);
+        this.ship01 = new Spaceship(this, game.config.width + borderUISize*6, borderUISize*4, 'spaceship', 0, 30, 15000).setOrigin(0, 0);
+        this.ship02 = new Spaceship(this, game.config.width + borderUISize*3, borderUISize*5 + borderPadding*2, 'spaceship', 0, 20, 10000).setOrigin(0,0);
+        this.ship03 = new Spaceship(this, game.config.width, borderUISize*6 + borderPadding*4, 'spaceship', 0, 10, 5000).setOrigin(0, 0);
 
         //define keys
         keyF = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F);
@@ -65,10 +65,13 @@ class Play extends Phaser.Scene {
         //GAME OVER flag
         this.gameOver = false;
 
+        
         //Initialize Timer
         this.timer = game.settings.gameTimer;
         //Display Time Remaining
+        scoreConfig.align = 'center';
         this.timeDisplay = this.add.text(borderUISize + borderPadding*23, borderUISize + borderPadding*2, this.timer, scoreConfig);
+        scoreConfig.align = 'right';
 
         //60-second play clock
         scoreConfig.fixedWidth = 0;
@@ -86,12 +89,10 @@ class Play extends Phaser.Scene {
         //update visible timer
         if(!this.gameOver){
             this.timer -= delta;
-            this.timeDisplay.text = this.timer;
-        } else {
-            //make sure that the timer isn't showing any miliseconds
-            this.timer = 0;
-            this.timeDisplay.text = this.timer;
-        }
+            //learned Math.floor from this page
+            //https://www.html5gamedevs.com/topic/5254-how-to-display-the-timer-with-commasdots/
+            this.timeDisplay.text = Math.floor(this.timer / 1000);
+        } 
         
         //check key input for restart
         if(this.gameOver && Phaser.Input.Keyboard.JustDown(keyR)){
