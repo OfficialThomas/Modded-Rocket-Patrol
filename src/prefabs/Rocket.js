@@ -24,6 +24,8 @@ class Rocket extends Phaser.GameObjects.Sprite {
             }
         }
         //fire button
+        //learned about mousePointer.buttons on this page
+        //https://photonstorm.github.io/phaser3-docs/Phaser.Input.Pointer.html
         if(game.input.mousePointer.buttons == 1 && !this.isFiring){
             this.isFiring = true;
             this.sfxRocket.play();      //play sfx
