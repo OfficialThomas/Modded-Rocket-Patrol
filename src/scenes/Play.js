@@ -76,12 +76,12 @@ class Play extends Phaser.Scene {
         scoreConfig.align = 'right';
 
         //60-second play clock
-        scoreConfig.fixedWidth = 0;
-        this.clock = this.time.delayedCall(this.timer, () => {
-            this.add.text(game.config.width/2, game.config.height/2, 'GAME OVER', scoreConfig).setOrigin(0.5);
-            this.add.text(game.config.width/2, game.config.height/2 + 64, 'Press (R) to Restart or ← for Menu', scoreConfig).setOrigin(0.5);
-            this.gameOver = true;
-        }, null, this);
+        //scoreConfig.fixedWidth = 0;
+        //this.clock = this.time.delayedCall(this.timer, () => {
+        //    this.add.text(game.config.width/2, game.config.height/2, 'GAME OVER', scoreConfig).setOrigin(0.5);
+        //    this.add.text(game.config.width/2, game.config.height/2 + 64, 'Press (R) to Restart or ← for Menu', scoreConfig).setOrigin(0.5);
+        //    this.gameOver = true;
+        //}, null, this);
 
     }
 
@@ -93,8 +93,11 @@ class Play extends Phaser.Scene {
             this.timer -= delta;
             //learned Math.floor from this page
             //https://www.html5gamedevs.com/topic/5254-how-to-display-the-timer-with-commasdots/
-            this.timeDisplay.text = Math.floor(this.timer / 1000);
-        } 
+            this.timeDisplay.text = Math.floor((this.timer / 1000) + 1);
+            if(this.timer <= 0){
+                this.gameOver = true;
+            }
+        }
         
         //check key input for restart
         if(this.gameOver && Phaser.Input.Keyboard.JustDown(keyR)){
@@ -152,5 +155,7 @@ class Play extends Phaser.Scene {
         this.p1Score += ship.points;
         this.scoreLeft.text = this.p1Score;
         this.sound.play('sfx_explosion');
+        this.timer += ship.seconds;
+        this.timeDisplay.text = Math.floor((this.timer / 1000) + 1);
     }
 }
