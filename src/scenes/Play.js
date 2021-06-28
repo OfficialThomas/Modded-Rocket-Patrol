@@ -88,12 +88,16 @@ class Play extends Phaser.Scene {
     //referenced this page when adding time and delta to update
     //https://gamedev.stackexchange.com/questions/182242/phaser-3-how-to-trigger-an-event-every-1-second
     update(time, delta) {
+
         //update visible timer
         if(!this.gameOver){
             this.timer -= delta;
             //learned Math.floor from this page
             //https://www.html5gamedevs.com/topic/5254-how-to-display-the-timer-with-commasdots/
             this.timeDisplay.text = Math.floor((this.timer / 1000) + 1);
+
+            //referenced this page when trying to avoid timers for the game timer
+            //https://docs.idew.org/video-game/project-references/phaser-coding/timers
             if(this.timer <= 0){
                 this.gameOver = true;
             }
