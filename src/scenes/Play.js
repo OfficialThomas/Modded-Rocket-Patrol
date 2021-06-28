@@ -65,16 +65,34 @@ class Play extends Phaser.Scene {
         //GAME OVER flag
         this.gameOver = false;
 
+        //Initialize Timer
+        this.timer = game.settings.gameTimer;
+        //Display Time Remaining
+        this.timeDisplay = this.add.text(borderUISize + borderPadding*23, borderUISize + borderPadding*2, this.timer, scoreConfig);
+
         //60-second play clock
         scoreConfig.fixedWidth = 0;
-        this.clock = this.time.delayedCall(game.settings.gameTimer, () => {
+        this.clock = this.time.delayedCall(this.timer, () => {
             this.add.text(game.config.width/2, game.config.height/2, 'GAME OVER', scoreConfig).setOrigin(0.5);
             this.add.text(game.config.width/2, game.config.height/2 + 64, 'Press (R) to Restart or ← for Menu', scoreConfig).setOrigin(0.5);
             this.gameOver = true;
         }, null, this);
+
     }
 
-    update() {
+    //referenced this page when adding time and delta to update
+    //https://gamedev.stackexchange.com/questions/182242/phaser-3-how-to-trigger-an-event-every-1-second
+    update(time, delta) {
+        //update visible timer
+        if(!this.gameOver){
+            this.timer -= delta;
+            this.timeDisplay.text = this.timer;
+        } else {
+            //make sure that the timer isn't showing any miliseconds
+            this.timer = 0;
+            this.timeDisplay.text = this.timer;
+        }
+        
         //check key input for restart
         if(this.gameOver && Phaser.Input.Keyboard.JustDown(keyR)){
             this.scene.restart();
