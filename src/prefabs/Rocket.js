@@ -13,10 +13,14 @@ class Rocket extends Phaser.GameObjects.Sprite {
     update() {
         //left/right movement
         if(!this.isFiring) {
-            if(keyLEFT.isDown && this.x >= borderUISize + this.width){
-                this.x -= this.moveSpeed;
-            } else if(keyRIGHT.isDown && this.x <= game.config.width - borderUISize - this.width){
-                this.x += this.moveSpeed;
+            //found mouse movement input on this page
+            //https://stackoverflow.com/questions/28104605/how-to-find-the-mouse-position-x-y-using-phaser    
+            if(game.input.mousePointer.x <= borderUISize + this.width){
+                this.x = borderUISize + this.width;
+            } else if(game.input.mousePointer.x >= game.config.width - borderUISize - this.width){
+                this.x = game.config.width - borderUISize - this.width;
+            } else {
+                this.x = game.input.mousePointer.x;  
             }
         }
         //fire button
