@@ -69,6 +69,8 @@ class Play extends Phaser.Scene {
         //Initialize Timer
         this.timer = game.settings.gameTimer;
         //Display Time Remaining
+        //learned center for .align on this page
+        //https://photonstorm.github.io/phaser3-docs/Phaser.Types.GameObjects.Text.html#.TextStyle
         scoreConfig.align = 'center';
         this.timeDisplay = this.add.text(borderUISize + borderPadding*23, borderUISize + borderPadding*2, this.timer, scoreConfig);
         scoreConfig.align = 'right';
