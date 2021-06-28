@@ -73,15 +73,14 @@ class Play extends Phaser.Scene {
         //https://photonstorm.github.io/phaser3-docs/Phaser.Types.GameObjects.Text.html#.TextStyle
         scoreConfig.align = 'center';
         this.timeDisplay = this.add.text(borderUISize + borderPadding*23, borderUISize + borderPadding*2, this.timer, scoreConfig);
+        
+        //Game Over menu
         scoreConfig.align = 'right';
-
-        //60-second play clock
-        //scoreConfig.fixedWidth = 0;
-        //this.clock = this.time.delayedCall(this.timer, () => {
-        //    this.add.text(game.config.width/2, game.config.height/2, 'GAME OVER', scoreConfig).setOrigin(0.5);
-        //    this.add.text(game.config.width/2, game.config.height/2 + 64, 'Press (R) to Restart or ← for Menu', scoreConfig).setOrigin(0.5);
-        //    this.gameOver = true;
-        //}, null, this);
+        scoreConfig.fixedWidth = 0;
+        this.endMenu1 = this.add.text(game.config.width/2, game.config.height/2, 'GAME OVER', scoreConfig).setOrigin(0.5);
+        this.endMenu2 = this.add.text(game.config.width/2, game.config.height/2 + 64, 'Press (R) to Restart or ← for Menu', scoreConfig).setOrigin(0.5);
+        this.endMenu1.alpha = 0;
+        this.endMenu2.alpha = 0;
 
     }
 
@@ -100,6 +99,8 @@ class Play extends Phaser.Scene {
             //https://docs.idew.org/video-game/project-references/phaser-coding/timers
             if(this.timer <= 0){
                 this.gameOver = true;
+                this.endMenu1.alpha = 1;
+                this.endMenu2.alpha = 1;
             }
         }
         
