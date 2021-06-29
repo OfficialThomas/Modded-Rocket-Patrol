@@ -1,13 +1,18 @@
 # Modded-Rocket-Patrol
+Thomas Noell
+Modded Rocket Patrol
+6/28/2021
+Time: 10 Hours
+
 Second assignment of CMPM 120 during Summer 2021. A Phaser 3 clone/remake of the APF-M1000 built-in gallery shooter, Rocket Patrol. This version includes modifications made to the game to change the experience.
 
-The mods for this game include:
-- A time display for seconds remaining
-- Additional time when a ship is destroyed
-- Rocket is now controlled by the mouse and fired with left click
-- New artwork for in-game assets (rocket, spaceship, explosion)
-- New explosion sfx that are randomized on player impact
-- A New ship that's smaller and faster and worth more
+Point Breakdown:
+- Display the time remaining (in seconds) on the screen (10)
+- Implement a new timing/scoring mechanism that adds time to the clock for successful hits (20)
+- Implement mouse control for player movement and mouse click to fire (20)
+- Create new artwork for all of the in-game assets (rocket, spaceships, explosion) (20) 
+- Create 4 new explosion SFX and randomize which one plays on impact (10)
+- Create a new spaceship type (w/ new artwork) that's smaller, moves faster, and is worth more points (20)
 
 Here is the link to the github page:
 https://officialthomas.github.io/Modded-Rocket-Patrol/
