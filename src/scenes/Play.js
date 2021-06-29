@@ -160,7 +160,30 @@ class Play extends Phaser.Scene {
         //score add and repaint
         this.p1Score += ship.points;
         this.scoreLeft.text = this.p1Score;
-        this.sound.play('sfx_explosion');
+
+        //generate random explosion sound
+        //looked at this page for switch statements in js
+        //https://www.w3schools.com/js/js_switch.asp 
+        switch (Phaser.Math.Between(0, 6)){
+            case 1:
+                this.sound.play('sfx_explosion');
+                break;
+            case 2:
+                this.sound.play('sfx_explosion2');
+                break;
+            case 3:
+                this.sound.play('sfx_explosion3');
+                break;
+            case 4:
+                this.sound.play('sfx_explosion4');
+                break;
+            case 5:
+                this.sound.play('sfx_explosion5');
+                break;
+            default:
+                this.sound.play('sfx_explosion');
+                break;
+        }
         this.timer += ship.seconds;
         this.timeDisplay.text = Math.floor((this.timer / 1000) + 1);
     }
