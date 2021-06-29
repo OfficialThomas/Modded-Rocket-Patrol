@@ -1,8 +1,8 @@
 # Modded-Rocket-Patrol
-Thomas Noell
-Modded Rocket Patrol
-6/28/2021
-Time: 10 Hours
+Thomas Noell \
+Modded Rocket Patrol \
+6/28/2021 \
+Time: 10 Hours \
 
 Second assignment of CMPM 120 during Summer 2021. A Phaser 3 clone/remake of the APF-M1000 built-in gallery shooter, Rocket Patrol. This version includes modifications made to the game to change the experience.
 
