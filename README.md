@@ -15,7 +15,8 @@ Point Breakdown:
 - Create a new spaceship type (w/ new artwork) that's smaller, moves faster, and is worth more points (20)
 
 NOTES:
-For the explosion sfx, I included 4 new sfx for a total of 5. It may take more than 5 hits to hear all the explosion sounds in the game.
+- For the explosion sfx, I included 4 new sfx for a total of 5. It may take more than 5 hits to hear all the explosion sounds in the game.
+- Any citations are included at the location of the modification.
 
 Here is the link to the github page:
 https://officialthomas.github.io/Modded-Rocket-Patrol/
