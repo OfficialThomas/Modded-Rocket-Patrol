@@ -163,7 +163,9 @@ class Play extends Phaser.Scene {
 
         //generate random explosion sound
         //looked at this page for switch statements in js
-        //https://www.w3schools.com/js/js_switch.asp 
+        //https://www.w3schools.com/js/js_switch.asp
+        //found out about Math.Between from this page
+        //https://rexrainbow.github.io/phaser3-rex-notes/docs/site/random/ 
         switch (Phaser.Math.Between(0, 6)){
             case 1:
                 this.sound.play('sfx_explosion');
