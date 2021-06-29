@@ -14,5 +14,8 @@ Point Breakdown:
 - Create 4 new explosion SFX and randomize which one plays on impact (10)
 - Create a new spaceship type (w/ new artwork) that's smaller, moves faster, and is worth more points (20)
 
+NOTES:
+For the explosion sfx, I included 4 new sfx for a total of 5. It may take more than 5 hits to hear all the explosion sounds in the game.
+
 Here is the link to the github page:
 https://officialthomas.github.io/Modded-Rocket-Patrol/
